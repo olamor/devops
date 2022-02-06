@@ -1,0 +1,30 @@
+ersion: '2'
+
+services:
+  openfire:
+    restart: unless-stopped
+    image: gizmotronic/openfire:latest
+    hostname: jabber.example.com
+    ports:
+      - 9090:9090
+      - 5222:5222
+      - 7777:7777
+    volumes:
+      - ./databases/openfire:/var/lib/openfire
+      - ./logs/openfire:/var/log/openfire/
+    links:
+      - postgres:db
+
+  postgres:
+    restart: unless-stopped
+    image: postgres:9
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=openfire
+      - POSTGRES_USER=openfire
+      - POSTGRES_PASSWORD=openfire_pass
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - ./databases/postgresql:/var/lib/postgresql/data/pgdata
+      - ./logs/postgresql:/var/log/postgresql
