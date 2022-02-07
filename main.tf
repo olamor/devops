@@ -1,7 +1,7 @@
 provider "aws" {
   region     = "us-east-1"
-  access_key = "AKIAQO7LGZKL3BX7APXO"
-  secret_key = "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"
+  access_key = "xxx"
+  secret_key = "yyy"
 }
 
 resource "aws_instance" "my_openfire" {
@@ -41,7 +41,26 @@ resource "aws_instance" "promgraf" {
   instance_type = "t2.micro"
   key_name   = "keyopenfire"
   vpc_security_group_ids = [aws_security_group.promgraf_ports.id]
-  user_data = file("jenpromgraf/jenpromgraf.sh")
+  #user_data = file("jenpromgraf/jenpromgraf.sh")
+
+      connection {    
+      type     = "ssh"    
+      user     = "ubuntu"    
+      private_key = file("/home/topadmin/Softserve/Project/devops/keyopenfire.pem")
+      host     = self.public_ip  
+    }
+
+  provisioner "file" {    
+    source      = "prometheus.sh"    
+    destination = "/tmp/prometheus.sh"  
+  }
+
+  provisioner "remote-exec" {    
+    inline = [      
+      "chmod +x /tmp/prometheus.sh",      
+      "sudo /tmp/prometheus.sh",    
+    ]  
+  }
 
   tags = {
     Name = "promgraf"
