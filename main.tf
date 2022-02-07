@@ -1,7 +1,7 @@
 provider "aws" {
   region     = "us-east-1"
-  access_key = "xxx"
-  secret_key = "yyy"
+  access_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  secret_key = "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"
 }
 
 resource "aws_instance" "my_openfire" {
