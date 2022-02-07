@@ -39,4 +39,4 @@ sudo docker run -d -p 9100:9100  -v "/:/host:ro,rslave" --name=node_exporter qua
 echo "==================================================
       Installing Openfire and PostgreSQL ...
 ==================================================" 
-docker-compose up
+docker-compose up -d
