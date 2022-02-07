@@ -1,7 +1,7 @@
 provider "aws" {
   region     = "us-east-1"
-  access_key = "xxxxxxxxxxxxxxxxxx"
-  secret_key = "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+  access_key = "AKIAQO7LGZKL6NKGEHVM"
+  secret_key = "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"
 }
 
 resource "aws_instance" "my_openfire" {
@@ -18,20 +18,20 @@ resource "aws_instance" "my_openfire" {
       host     = self.public_ip  
     }
 
-  provisioner "file" {    
-    source      = "ofpsql/docker-compose.yml"    
-    destination = "~/docker-compose.yml"  
-  }
+  # provisioner "file" {    
+  #   source      = "ofpsql/docker-compose.yml"    
+  #   destination = "~/docker-compose.yml"  
+  # }
 
   provisioner "file" {    
-    source      = "ofpsql/ofpsql.sh"    
-    destination = "~/ofpsql.sh"  
+    source      = "openfire.sh"    
+    destination = "/tmp/openfire.sh"  
   }
 
   provisioner "remote-exec" {    
     inline = [      
-      "chmod +x ~/ofpsql.sh",      
-      "sudo ~/ofpsql.sh",    
+      "chmod +x /tmp/openfire.sh",      
+      "sudo /tmp/openfire.sh",    
     ]  
   }
 

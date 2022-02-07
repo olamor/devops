@@ -1,3 +1,4 @@
+#!/bin/bash
 sudo -i
 echo "=================================
       Installing Docker ...
