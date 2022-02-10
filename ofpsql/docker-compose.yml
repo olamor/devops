@@ -4,7 +4,8 @@ services:
   openfire:
     restart: unless-stopped
     image: gizmotronic/openfire:latest
-    hostname: jabber.example.com
+    container_name: openfire
+    hostname: openfire.olamor.pp.ua
     ports:
       - 9090:9090
       - 5222:5222
@@ -18,6 +19,7 @@ services:
   postgres:
     restart: unless-stopped
     image: postgres:9
+    container_name: postgres
     ports:
       - 5432:5432
     environment:
