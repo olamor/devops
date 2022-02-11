@@ -1,7 +1,7 @@
 provider "aws" {
   region     = "us-east-1"
-  access_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-  secret_key = "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"
+  access_key = "XXXXXXXXXXXXXXXXXXXXXXXX"
+  secret_key = "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"
 }
 
 resource "aws_instance" "my_openfire" {
@@ -14,7 +14,7 @@ resource "aws_instance" "my_openfire" {
     connection {    
       type     = "ssh"    
       user     = "ubuntu"    
-      private_key = file("/home/topadmin/Softserve/Project/devops/keyopenfire.pem")
+      private_key = file("/home/topadmin/Softserve/keyopenfire.pem")
       host     = self.public_ip  
     }
 
@@ -46,7 +46,7 @@ resource "aws_instance" "promgraf" {
       connection {    
       type     = "ssh"    
       user     = "ubuntu"    
-      private_key = file("/home/topadmin/Softserve/Project/devops/keyopenfire.pem")
+      private_key = file("/home/topadmin/Softserve/keyopenfire.pem")
       host     = self.public_ip  
     }
 
