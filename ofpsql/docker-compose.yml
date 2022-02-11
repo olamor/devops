@@ -30,4 +30,4 @@ services:
     volumes:
       - ./databases/postgresql:/var/lib/postgresql/data/pgdata
       - ./logs/postgresql:/var/log/postgresql
-#Commit3
+#Commit4
