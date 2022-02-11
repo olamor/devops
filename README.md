@@ -1,3 +1,3 @@
 # devops
 terraform apple -auto-approve
-go to Jenkins' server
+go to Jenkins' server ...
