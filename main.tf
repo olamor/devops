@@ -14,7 +14,7 @@ resource "aws_instance" "my_openfire" {
     connection {    
       type     = "ssh"    
       user     = "ubuntu"    
-      private_key = file("/home/topadmin/Softserve/keyopenfire.pem")
+      private_key = file("/path/to/key.pem")
       host     = self.public_ip  
     }
 
@@ -46,7 +46,7 @@ resource "aws_instance" "promgraf" {
       connection {    
       type     = "ssh"    
       user     = "ubuntu"    
-      private_key = file("/home/topadmin/Softserve/keyopenfire.pem")
+      private_key = file("/path/to/key.pem")
       host     = self.public_ip  
     }
 
