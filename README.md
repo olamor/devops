@@ -1,3 +1,3 @@
 # devops
-terraform apple -auto-approve
+terraform apply -auto-approve
 Commit
